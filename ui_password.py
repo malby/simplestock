@@ -9,7 +9,11 @@
 #(c) Noprianto <nop@tedut.com>, 2008-2009, GPL
 
 
-import md5
+try: 
+   from hashlib import md5 as md5new
+except ImportError:
+   from md5 import new as md5new
+#
 
 import gtk
 import pygtk
@@ -103,11 +107,11 @@ class UIPassword:
     def passwd_change(self, widget):
         ret = False
         old = self.ent_old.get_text()
-        old_md5 = md5.new(old).hexdigest()
+        old_md5 = md5new(old).hexdigest()
         new = self.ent_new.get_text()
-        new_md5 = md5.new(new).hexdigest()
+        new_md5 = md5new(new).hexdigest()
         again = self.ent_again.get_text()
-        again_md5 = md5.new(again).hexdigest()
+        again_md5 = md5new(again).hexdigest()
         
         if self.validate_login(self.myname, old_md5):
             #correct old password

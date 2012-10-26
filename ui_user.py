@@ -8,7 +8,11 @@
 
 #(c) Noprianto <nop@tedut.com>, 2008-2009, GPL
 
-import md5
+try: 
+   from hashlib import md5 as md5new
+except ImportError:
+   from md5 import new as md5new
+#
 
 import gtk
 import pygtk
@@ -344,7 +348,7 @@ class UIUser:
             uname = ent_uname.get_text().strip()
             rname = ent_rname.get_text().strip()
             passwd = ent_passwd.get_text().strip()
-            passwd_md5 = md5.new(passwd).hexdigest()
+            passwd_md5 = md5new(passwd).hexdigest()
             group = combo_group.get_active_text()
             gid = 0
             if group:
@@ -429,7 +433,7 @@ class UIUser:
                 uname = ent_uname.get_text().strip()
                 rname = ent_rname.get_text().strip()
                 passwd = ent_passwd.get_text().strip()
-                passwd_md5 = md5.new(passwd).hexdigest()
+                passwd_md5 = md5new(passwd).hexdigest()
                 group = combo_group.get_active_text()
                 gid = 0
                 if group:

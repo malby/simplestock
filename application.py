@@ -3,15 +3,19 @@
 # (c) Noprianto, 2008-2009, GPL
 #
 
-import md5
 import os
+try: 
+   from hashlib import md5 as md5new
+except ImportError:
+   from md5 import new as md5new
+#
 
 #application class
 class Application:
     def __init__(self):
         #basic properties
         self.name = 'SimpleStock'
-        self.version = (0, 9, 5)
+        self.version = (0, 96)
         self.version_str = '.'.join([str(x) for x in self.version])
         self.company = 'tedut.com'
         self.website = 'http://www.tedut.com'
@@ -82,7 +86,7 @@ class Application:
         ret.append(query)
         #        
         passwd = 'admin'
-        passwd_md5 = md5.new(passwd).hexdigest() 
+        passwd_md5 = md5new(passwd).hexdigest() 
         query = '''
         INSERT INTO ms_users(user_name, real_name, gid, password) 
             VALUES('admin', 'Administrator', 1, '%s')

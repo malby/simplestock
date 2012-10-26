@@ -2,7 +2,11 @@
 # (c) Noprianto <nop@tedut.com>, 2008-2009, GPL
 #
 #
-import md5
+try: 
+   from hashlib import md5 as md5new
+except ImportError:
+   from md5 import new as md5new
+#
 import gtk
 import pygtk
 pygtk.require('2.0')
@@ -137,7 +141,7 @@ def simple_login(validator, title='Login', username_label='User Name',
             uname = ent_uname.get_text()
             passwd = ent_passwd.get_text()
             if use_md5:
-                passwd2 = md5.new(passwd).hexdigest()
+                passwd2 = md5new(passwd).hexdigest()
             else:
                 passwd2 = passwd
             

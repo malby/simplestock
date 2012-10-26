@@ -1,9 +1,31 @@
-SimpleStock v0.9.5, (c) Noprianto <nop@tedut.com>, 2008-2009, GPL.
+simplestock, Simple Stock Management application
+(c) Noprianto <nop@tedut.com>
+2008-2009
+GPL
 
-RUN: python __main__.py
 
-default user/password: admin
+SCREENSHOTS: https://github.com/nopri/simplestock/wiki
 
-todo:
-- more testing under python 2.7
-- update terms used
+
+FEATURES:
+- GUI Application
+- Multi User
+- Group Editor
+- Product Category
+- Product Moves / Flow Control and Report
+- Export to CSV
+- Single File Database (SQLite) 
+
+
+REQUIREMENTS:
+- Python
+- PyGTK
+
+
+DEFAULT USER/PASSWORD: admin
+
+
+RUN: python simplestock.py 
+
+
+THANK YOU :)
